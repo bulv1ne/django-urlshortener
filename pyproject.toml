@@ -15,6 +15,7 @@ whitenoise = "*"
 django-debug-toolbar = "*"
 djangorestframework = "*"
 django-crispy-forms = "*"
+drf-spectacular = "*"
 
 [tool.poetry.dev-dependencies]
 flake8 = "*"

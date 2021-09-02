@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "rest_framework",
     "crispy_forms",
+    "drf_spectacular",
     "urlshortener",
 ]
 
@@ -131,7 +132,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATIC_ROOT = BASE_DIR / "static_root"
+STATIC_ROOT = os.getenv("STATIC_ROOT", BASE_DIR / "static_root")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -139,3 +140,12 @@ STATIC_ROOT = BASE_DIR / "static_root"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+SPECTACULAR_SETTINGS = {
+    "TITLE": "URL Shortener api",
+    "DESCRIPTION": "URL Shortener api description",
+    "VERSION": "0.1.0",
+}

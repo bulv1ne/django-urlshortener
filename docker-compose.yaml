@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+    database:
+        image: postgres:alpine
+        environment:
+            - POSTGRES_DB=urlshortener
+            - POSTGRES_USER=dbadmin
+            - POSTGRES_PASSWORD=securepassword
+        ports:
+            - "5432:5432"
+        volumes:
+            - db-data:/var/lib/postgresql/data
+
+    webserver:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        privileged: true
+        depends_on:
+            - database
+        environment:
+            - POSTGRES_DB=urlshortener
+            - POSTGRES_USER=dbadmin
+            - POSTGRES_PASSWORD=securepassword
+            - POSTGRES_HOST=database
+            - POSTGRES_PORT=5432
+            - DJANGO_SETTINGS_MODULE=server.local_settings
+        volumes:
+            - ./src:/var/project:ro
+        ports:
+            - "8000:8000"
+        command: python manage.py runserver 0.0.0.0:8000
+
+volumes:
+    db-data:
+
+networks:
+    default:

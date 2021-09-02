@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "django-urlshortener"
+version = "0.1.0"
+description = ""
+authors = ["Niels Lemmens <draso.odin@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "*"
+gunicorn = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+psycopg2-binary = "*"
+whitenoise = "*"
+django-debug-toolbar = "*"
+djangorestframework = "*"
+django-crispy-forms = "*"
+
+[tool.poetry.dev-dependencies]
+flake8 = "*"
+isort = "*"
+black = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

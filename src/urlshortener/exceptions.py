@@ -1,0 +1,2 @@
+class NoWordsAvailableException(Exception):
+    pass

@@ -24,3 +24,10 @@ $ ./setup-docker-compose.sh
 ```sh
 $ docker-compose up webserver
 ```
+
+## Web endpoints
+
+- http://localhost:8000/ the main webpage
+- http://localhost:8000/api/shorturl/ POST to create a short url
+- http://localhost:8000/api/schema/ OpenAPIv3 config file
+- http://localhost:8000/api/schema/swagger-ui/ Swagger UI for the api documentation
